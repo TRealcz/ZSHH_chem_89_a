@@ -62,30 +62,27 @@ function parseCSV(csvText) {
  * Zde můžete měnit strukturu karty (přidat nové elementy, změnit pořadí)
  */
 function createCard(sample) {
-    // Získáme data podle konfigurace nahoře
-    const id = sample[CONFIG.fields.id] || '';
-    const team = sample[CONFIG.fields.Subjekt] || 'unknown';
-    const name = sample[CONFIG.fields.name] || 'Unnamed Sample';
-    const description = sample[CONFIG.fields.description] || '';
-    const location = sample[CONFIG.fields.location] || '';
-    const photoUrl = sample[CONFIG.fields.photo];
-    const commentary = sample[CONFIG.fields.commentary] || 'No results recorded.';
-    
-    // ###### PHOTO HANDLING - Zpracování chybějící fotografie
-    // Pokud photoUrl existuje a není prázdný, použijeme img tag, jinak placeholder
-    let imageHtml;
-    if (photoUrl && photoUrl.trim() !== '') {
-        // ###### IMAGE SIZE - Zde můžete změnit velikost obrázku (width/height)
-        imageHtml = `<img src="${photoUrl}" alt="${name}" class="card-image" loading="lazy">`;
-    } else {
-        // Placeholder s prvním písmenem názvu vzorku
-        const initial = name.charAt(0).toUpperCase();
-        imageHtml = `
-            <div class="image-placeholder">
-                <span>${CONFIG.noPhotoText} ${initial}</span>
+    const id = sample[CONFIG.fields.ID] || '';
+    const subject = sample[CONFIG.fields.Subjekt] || '';
+    const solvent = sample[CONFIG.fields.Rozpouštědlo] || '';
+    const flowerColor = sample[CONFIG.fields.Barva_kytky] || '';
+    const location = sample[CONFIG.fields.Lokalita] || '';
+    const ph = sample[CONFIG.fields.pH] || '';
+    const extractColor = sample[CONFIG.fields.Barva_extraktu] || '';
+
+    return `
+        <article class="sample-card">
+            <div class="card-content">
+                <h2>${subject}</h2>
+                <p>🧪 Rozpouštědlo: ${solvent}</p>
+                <p>🌸 Barva květu: ${flowerColor}</p>
+                <p>📍 Lokalita: ${location}</p>
+                <p>⚗️ pH: ${ph}</p>
+                <p>🎨 Barva extraktu: ${extractColor}</p>
             </div>
-        `;
-    }
+        </article>
+    `;
+}
     
     // ###### TEAM CLASS - Přidáme třídu podle týmu pro případné barevné rozlišení
     const teamClass = `team-${team.toLowerCase().replace(/\s+/g, '_')}`;
