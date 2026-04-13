@@ -4,26 +4,20 @@
  * Například pokud přejmenujete "photo_url" na "image", změňte photo: 'image'
  */
 const CONFIG = {
-    // Názvy sloupců v CSV souboru (musí přesně odpovídat hlavičce!)
     fields: {
         ID: 'ID',
         Subjekt: 'Subjekt',
         Rozpouštědlo: 'Rozpouštědlo',
-        Barva_kytky: ' Barva kytky',
+        Barva_kytky: 'Barva kytky', // ❗ bez mezery na začátku
         Lokalita: 'Lokalita',
         Doba_extrakce: 'Doba extrakce',
         Barva_papírku: 'Barva papírku',
         pH: 'pH',
         Barva_extraktu: 'Barva extraktu',
     },
-    
-    // ###### DATA SOURCE - Cesta k datům (pokud přejmenujete soubor, změňte zde)
     dataUrl: 'data.csv',
-    
-    // ###### PLACEHOLDER TEXT - Text, když chybí fotografie
     noPhotoText: '📷'
 };
-
 /**
  * ###### CSV PARSER - Funkce pro zpracování CSV
  * Tato funkce převede text CSV na pole objektů (záznamů)
