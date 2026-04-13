@@ -64,7 +64,7 @@ function parseCSV(csvText) {
 function createCard(sample) {
     // Získáme data podle konfigurace nahoře
     const id = sample[CONFIG.fields.id] || '';
-    const team = sample[CONFIG.fields.team] || 'unknown';
+    const team = sample[CONFIG.fields.Subjekt] || 'unknown';
     const name = sample[CONFIG.fields.name] || 'Unnamed Sample';
     const description = sample[CONFIG.fields.description] || '';
     const location = sample[CONFIG.fields.location] || '';
